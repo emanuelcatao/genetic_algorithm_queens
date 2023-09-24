@@ -87,13 +87,23 @@ async function geneticAlgorithm(n, maxGenerations, populationSize, mutationRate)
 }
 
 
-function drawBoard(board) {
+function prepareBoard() {
+    const n = parseInt(document.getElementById('nValue').value);
     const boardElement = document.getElementById('board');
-    const cellSize = boardElement.offsetWidth / board.length;
-    boardElement.style.gridTemplateColumns = `repeat(${board.length}, ${cellSize}px)`;
+
+    boardElement.style.width = '70vw';  // máximo definido anteriormente
+    boardElement.style.height = '70vh';  // máximo definido anteriormente
+
+    // Calcula o tamanho máximo de uma célula para caber no tamanho máximo do tabuleiro.
+    const cellSize = Math.min(boardElement.clientWidth / n, boardElement.clientHeight / n);
+
+    boardElement.style.gridTemplateRows = `repeat(${n}, ${cellSize}px)`;
+    boardElement.style.gridTemplateColumns = `repeat(${n}, ${cellSize}px)`;
+    
+    // Limpa o tabuleiro e cria as novas células.
     boardElement.innerHTML = '';
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board.length; j++) {
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
             const cell = document.createElement('div');
             cell.style.width = `${cellSize}px`;
             cell.style.height = `${cellSize}px`;
@@ -103,29 +113,35 @@ function drawBoard(board) {
             } else {
                 cell.classList.add('black');
             }
-            if (board[i] === j) {
-                cell.classList.add('queen');
-            }
             boardElement.appendChild(cell);
         }
     }
 }
 
-function prepareBoard() {
-    const n = parseInt(document.getElementById('nValue').value);
-    drawBoard(new Array(n).fill(-1));
+
+function drawQueens(solution) {
+    const boardElement = document.getElementById('board');
+    const cells = boardElement.querySelectorAll('.cell');
+    
+    for (let i = 0; i < solution.length; i++) {
+        const queenPosition = i * solution.length + solution[i];
+        cells[queenPosition].classList.add('queen');
+    }
 }
 
 async function startCalculation() {
     const n = parseInt(document.getElementById('nValue').value);
+    prepareBoard(n); // Primeiro, prepare o tabuleiro
+
     const maxGenerations = parseInt(document.getElementById('numGenerations').value) || 1000; // Valor padrão 1000
     const populationSize = parseInt(document.getElementById('populationSize').value) || 100;  // Valor padrão 100
     const mutationRate = parseFloat(document.getElementById('mutationRate').value) || 0.05;   // Valor padrão 0.05
 
     const result = await geneticAlgorithm(n, maxGenerations, populationSize, mutationRate);
-    drawBoard(result.solution);
+    drawQueens(result.solution); // Depois, coloque as rainhas
     document.getElementById("bestFitness").textContent = "Best Fitness: " + result.fitness;
 }
+
 
 
 function updateProgress(percentage) {
