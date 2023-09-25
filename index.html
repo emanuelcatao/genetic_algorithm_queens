@@ -3,180 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>N-Queens Genetic Algorithm</title>
-    <style>
-        body {
-            font-family: 'Roboto Mono', monospace;
-            background-color: #1a1a1a;
-            color: #f1f1f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        #title {
-            font-size: 2em;             
-            text-align: center;        
-            margin-bottom: 2rem;        
-            font-weight: bold;          
-            letter-spacing: 0.2rem;        
-            position: absolute;         
-            top: 5%;                    
-            left: 50%;                  
-            transform: translateX(-50%);
-        }
-
-        #container {
-            display: flex;
-            width: 90vw;
-            height: 80vh;
-        }
-
-        #sidebar {
-            width: 25%;
-            padding: 2rem;
-        }
-
-        label {
-            display: block;
-            margin-top: 0.9rem;
-            margin-bottom: 0.3rem;
-            margin-left: 0.5rem;
-            color: #f1f1f1;
-            font-weight: lighter;
-            text-transform: uppercase;
-            font-size: 0.9em;
-        }
-
-        input, button {
-            width: 80%; /* Ocupa toda a largura disponível */
-            padding: 0.7rem 1.6rem;
-            border: none;
-            background-color: #20232a;
-            color: #f1f1f1;
-            font-size: 0.9em;
-            cursor: pointer;
-            border-radius: 2rem;
-            transition: background-color 0.3s, transform 0.3s; 
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-        }
-
-        button {
-            margin-top: 1rem;
-        }
-
-        input:focus, button:focus {
-            outline: none;
-        }
-
-        button:hover {
-            background-color: #333842;
-        }
-
-        #boardWrapper {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            margin-left: 2rem;
-            position: relative;
-        }
-
-        #board {
-            max-width: 70vw; 
-            max-height: 70vh; 
-            display: grid;
-            gap: 0;
-        }
-
-
-        .cell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .white {
-            background-color: #20232a;
-        }
-
-        .black {
-            background-color: #333842;
-        }
-
-        .queen::before {
-            content: "";
-            display: block;
-            width: 70%;
-            height: 70%;
-            background-image: url('queen-icon.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center center;
-            filter: invert(1);
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            #container {
-                flex-direction: column; 
-            }
-
-            #sidebar {
-                width: 100%; 
-                padding: 1rem; 
-            }
-
-            #boardWrapper {
-                margin-left: 0; 
-                width: 100%; 
-            }
-
-            #board {
-                max-width: 90vw; 
-                max-height: 60vh;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div id="container">
-        <div id="title">
+    <div class="main-wrapper">
+        <div id="toolbar" class="toolbar">
+            <div id="title" class="title">
             N-Queens Solver
+            </div>
+
+            <div id="menu" class="menu">
+                <label for="nValue">N value:</label>
+                <input type="number" id="nValue" placeholder="Enter N value">
+                
+                <label for="numGenerations">Number of Generations:</label>
+                <input type="number" id="numGenerations">
+                
+                <label for="populationSize">Population Size:</label>
+                <input type="number" id="populationSize">
+                
+                <label for="mutationRate">Mutation Rate (0 to 1):</label>
+                <input type="number" id="mutationRate">
+                
+                <div class="button-container">
+                    <button id="start" onclick="prepareBoard(); startCalculation();">
+                        <span class="run-icon"></span>
+                    </button>
+                </div>
+                
+                <p id="bestFitness">Best Fitness: 0</p>
+            </div>
         </div>
 
-        <div id="sidebar">
-            <label for="nValue">N value:</label>
-            <input type="number" id="nValue" placeholder="Enter N value">
-            
-            <label for="numGenerations">Number of Generations:</label>
-            <input type="number" id="numGenerations" placeholder="Number of Generations">
-            
-            <label for="populationSize">Population Size:</label>
-            <input type="number" id="populationSize" placeholder="Population Size">
-            
-            <label for="mutationRate">Mutation Rate (0 to 1):</label>
-            <input type="number" id="mutationRate" placeholder="Mutation Rate (0 to 1)">
-            
-            <button onclick="prepareBoard(); startCalculation();">Start</button>
-            
-            <!-- Progress Bar -->
-            <div id="progressContainer" style="background-color: #1a1a1a; height: 20px; width: 100%; border-radius: 10px; margin-top: 10px;">
-                <div id="progressBar" style="background-color: #f1f1f1; height: 100%; width: 0%; border-radius: 10px;"></div>
-            </div>
-            <p id="bestFitness">Best Fitness: 0</p>
-        </div>
 
         <div id="boardWrapper">
             <div id="board"></div>
         </div>
+    </div>
+
+    <div id="progressContainer">
+        <div id="progressBar"></div>
     </div>
     <script src="script.js"></script>
 </body>

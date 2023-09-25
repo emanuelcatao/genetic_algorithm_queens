@@ -51,7 +51,7 @@ async function geneticAlgorithm(n, maxGenerations, populationSize, mutationRate)
             setTimeout(() => {
                 const newPopulation = [];
                 
-                // Elitism: keep the top 10% of the population
+                // Elitism: keep the top 10% of the population - tentativa de algo
                 const eliteCount = Math.floor(0.1 * populationSize);
                 let elites = [...population].sort((a, b) => fitness(a) - fitness(b)).slice(0, eliteCount);
                 newPopulation.push(...elites);
@@ -91,9 +91,10 @@ function prepareBoard() {
     const n = parseInt(document.getElementById('nValue').value);
     const boardElement = document.getElementById('board');
 
-    boardElement.style.width = '70vw';  // máximo definido anteriormente
-    boardElement.style.height = '70vh';  // máximo definido anteriormente
-
+    boardElement.style.width = '70vw';  
+    boardElement.style.height = '70vh';  
+    
+    // Isso aqui em algum momento funcionou, mas agora parece não fazer diferença
     // Calcula o tamanho máximo de uma célula para caber no tamanho máximo do tabuleiro.
     const cellSize = Math.min(boardElement.clientWidth / n, boardElement.clientHeight / n);
 
@@ -131,7 +132,7 @@ function drawQueens(solution) {
 
 async function startCalculation() {
     const n = parseInt(document.getElementById('nValue').value);
-    prepareBoard(n); // Primeiro, prepare o tabuleiro
+    prepareBoard(n);
 
     const maxGenerations = parseInt(document.getElementById('numGenerations').value) || 1000; // Valor padrão 1000
     const populationSize = parseInt(document.getElementById('populationSize').value) || 100;  // Valor padrão 100
