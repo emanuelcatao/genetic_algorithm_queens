@@ -15,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    margin: 0;
 }
 
 .content-wrapper {
@@ -78,7 +79,7 @@ button:hover {
 .toolbar {
     flex-shrink: 0;
     width: 25vw;
-    max-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     padding: 2rem 1rem;
