@@ -90,13 +90,11 @@ async function geneticAlgorithm(n, maxGenerations, populationSize, mutationRate)
 function prepareBoard() {
     const n = parseInt(document.getElementById('nValue').value);
     const boardElement = document.getElementById('board');
-
-    boardElement.style.width = '70vw';  
-    boardElement.style.height = '70vh';  
     
     // Isso aqui em algum momento funcionou, mas agora parece não fazer diferença
     // Calcula o tamanho máximo de uma célula para caber no tamanho máximo do tabuleiro.
     const cellSize = Math.min(boardElement.clientWidth / n, boardElement.clientHeight / n);
+    console.log(cellSize);
 
     boardElement.style.gridTemplateRows = `repeat(${n}, ${cellSize}px)`;
     boardElement.style.gridTemplateColumns = `repeat(${n}, ${cellSize}px)`;
@@ -140,6 +138,7 @@ async function startCalculation() {
 
     const result = await geneticAlgorithm(n, maxGenerations, populationSize, mutationRate);
     drawQueens(result.solution); // Depois, coloque as rainhas
+    updateProgress(0);
     document.getElementById("bestFitness").textContent = "Best Fitness: " + result.fitness;
 }
 

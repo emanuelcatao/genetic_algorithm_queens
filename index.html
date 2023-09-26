@@ -8,43 +8,44 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <div id="toolbar" class="toolbar">
-            <div id="title" class="title">
-            N-Queens Solver
-            </div>
-
-            <div id="menu" class="menu">
-                <label for="nValue">N value:</label>
-                <input type="number" id="nValue" placeholder="Enter N value">
-                
-                <label for="numGenerations">Number of Generations:</label>
-                <input type="number" id="numGenerations">
-                
-                <label for="populationSize">Population Size:</label>
-                <input type="number" id="populationSize">
-                
-                <label for="mutationRate">Mutation Rate (0 to 1):</label>
-                <input type="number" id="mutationRate">
-                
-                <div class="button-container">
-                    <button id="start" onclick="prepareBoard(); startCalculation();">
-                        <span class="run-icon"></span>
-                    </button>
+        <div class="content-wrapper">
+            <div id="toolbar" class="toolbar">
+                <div id="title" class="title">
+                N-Queens Solver
                 </div>
-                
-                <p id="bestFitness">Best Fitness: 0</p>
+
+                <div id="menu" class="menu">
+                    <label for="nValue">N value:</label>
+                    <input type="number" id="nValue" placeholder="Enter N value">
+                    
+                    <label for="numGenerations">Number of Generations:</label>
+                    <input type="number" id="numGenerations">
+                    
+                    <label for="populationSize">Population Size:</label>
+                    <input type="number" id="populationSize">
+                    
+                    <label for="mutationRate">Mutation Rate (0 to 1):</label>
+                    <input type="number" id="mutationRate">
+                    
+                    <div class="button-container">
+                        <button id="start" onclick="prepareBoard(); startCalculation();">
+                            <span class="run-icon"></span>
+                        </button>
+                    </div>
+                    
+                    <p id="bestFitness">Best Fitness: 0</p>
+                </div>
+            </div>
+
+            <div id="boardWrapper">
+                <div id="board"></div>
             </div>
         </div>
-
-
-        <div id="boardWrapper">
-            <div id="board"></div>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
         </div>
     </div>
 
-    <div id="progressContainer">
-        <div id="progressBar"></div>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>

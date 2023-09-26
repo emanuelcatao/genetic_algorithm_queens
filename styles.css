@@ -13,7 +13,13 @@ body {
 
 .main-wrapper {
     display: flex;
+    flex-direction: column;
     height: 100vh;
+}
+
+.content-wrapper {
+    display: flex;
+    max-height: 100vh;
 }
 
 label {
@@ -40,7 +46,7 @@ input, button {
 input {
     background-color: transparent;
     border: none;
-    border-bottom: 0.3rem solid #20232a;
+    border-bottom: 0.2rem solid #20232f;
     padding: 0.7rem 0;
     border-radius: 0;
     width: 100%;
@@ -72,13 +78,13 @@ button:hover {
 .toolbar {
     flex-shrink: 0;
     width: 25vw;
-    height: 100vh;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     padding: 2rem 1rem;
     margin: 0 0 0 0;
     align-items: center;
-    background-color: #1c1c1c;
+    background-color: #1d1d1d;
 }
 
 #start {
@@ -105,13 +111,12 @@ button:hover {
 .toolbar .title {
     font-size: 2em;             
     text-align: center;
-    margin-top: 5rem;        
-    font-weight: bold;    
-    position: absolute;                
+    margin-top: 3rem;        
+    font-weight: bold;
 }
 
 .toolbar .menu {
-    margin-top: 10rem;
+    margin-top: 2rem;
 }
 
 #boardWrapper {
@@ -121,28 +126,32 @@ button:hover {
     align-items: center;
     overflow: hidden;
     position: relative;
-    border: 1px solid red; /** Isso aqui é só pra visualizar o troço na tela**/
+    width: calc(100vw - 25vw);
 }
 
 #board {
-    max-width: 70vw; 
-    max-height: 70vh; 
+    min-width: 96vh; 
+    min-height: 96vh;
+    max-width: 96vh; 
+    max-height: 96vh;
+    align-items: center;
     display: grid;
     gap: 0;
 }
 
 #progressContainer {
+    display: flex;
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: #1a1a1a;
-    height: 20px;
+    background-color: #1d1d1d;
+    height: 2vh;
     width: 100%;
-    margin-top: 10px;
-    z-index: 1000;
+    z-index: 1;
 }
 
 #progressBar {
+    display: block;
     background-color: #f1f1f1;
     height: 100%;
     width: 0%;
