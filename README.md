@@ -19,4 +19,4 @@ O código JavaScript apresentado descreve uma implementação de algoritmo gené
 | **Geração inicial**         | Indivíduos iniciais com posições aleatórias para as rainhas.                               |
 | **Condição de parada**      | Solução ideal encontrada ou número máximo de gerações alcançado.                           |
 
-
+#### _**Nota: PWA disponível**_
