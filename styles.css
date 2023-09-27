@@ -148,7 +148,7 @@ button:hover {
     background-color: #1d1d1d;
     height: 2vh;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
 }
 
 #progressBar {
@@ -186,39 +186,55 @@ button:hover {
     position: relative;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
-    
-    body, html {
-        overflow: auto;
+    body {
+        flex-direction: column;
+        overflow: visible;
         height: auto;
+    }
+
+    .main-wrapper {
+        height: 100vh;
+        margin: 0;
+        width: 100vw;
     }
     
     .toolbar {
-        width: 100%;
-        height: auto;
-    }
-    
-    .main-wrapper {
-        height: auto;
-        flex-direction: column;
+        width: 100vw;
+        max-height: 100vh;
+        overflow-y: auto;
+        padding: 0;
+        position: relative;
     }
 
     .content-wrapper {
         flex-direction: column;
+        width: 100vw; /* Garantir que ocupe toda a largura */
     }
 
     #boardWrapper {
-        width: 100%;
-        overflow-y: auto; 
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        width: 100vw;
+        z-index: 1;
     }
-    
+
     #board {
-        min-width: 90vw;
-        min-height: 90vw;
-        max-width: 90vw;
-        max-height: none;
+        width: calc(100vw - 2vh);
+        height: calc(100vw - 2vh);
+        min-width: calc(100vw - 2vh);
+        min-height: calc(100vw - 2vh);
+        max-width: calc(100vw - 2vh);
+        max-height: calc(100vw - 2vh);
+        margin-bottom: 2vh;
     }
 }
+
+
+
+
 
 
