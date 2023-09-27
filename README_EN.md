@@ -19,3 +19,4 @@ The provided JavaScript code describes an implementation of a genetic algorithm 
 | **Initial Generation**      | Initial individuals with random positions for the queens.                                  |
 | **Stopping Condition**      | Ideal solution found or maximum number of generations reached.                             |
 
+#### _**Note: PWA available**_
