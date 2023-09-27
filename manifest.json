@@ -1,0 +1,16 @@
+{
+    "name": "Genetic Algorithm Queens",
+    "short_name": "GA Queens",
+    "description": "Uma aplica\u00e7\u00e3o web para resolver o problema das N rainhas usando algoritmos gen\u00e9ticos.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "queen-icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
