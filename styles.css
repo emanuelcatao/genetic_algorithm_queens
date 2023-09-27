@@ -189,12 +189,13 @@ button:hover {
 /* Responsividade */
 @media (max-width: 768px) {
     
-    body {
-        flex-direction: column;
+    body, html {
+        overflow: auto;
+        height: auto;
     }
     
     .toolbar {
-        width: 100vw;
+        width: 100%;
         height: auto;
     }
     
@@ -205,19 +206,19 @@ button:hover {
 
     .content-wrapper {
         flex-direction: column;
-        max-height: unset;
     }
 
     #boardWrapper {
-        width: 100vw;
-        max-height: calc(100vh - 200px);
+        width: 100%;
+        overflow-y: auto; 
     }
     
     #board {
         min-width: 90vw;
         min-height: 90vw;
         max-width: 90vw;
-        max-height: 90vw;
+        max-height: none;
     }
 }
+
 
