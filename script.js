@@ -47,7 +47,7 @@ async function geneticAlgorithm(n, maxGenerations, populationSize, mutationRate)
     let bestSolution = null;
 
     const generationStep = async (generation) => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             setTimeout(() => {
                 const newPopulation = [];
                 
