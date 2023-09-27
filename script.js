@@ -47,7 +47,7 @@ async function geneticAlgorithm(n, maxGenerations, populationSize, mutationRate)
     let bestSolution = null;
 
     const generationStep = async (generation) => {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             setTimeout(() => {
                 const newPopulation = [];
                 
@@ -68,17 +68,23 @@ async function geneticAlgorithm(n, maxGenerations, populationSize, mutationRate)
 
                 population = newPopulation;
                 const bestIndividual = population.reduce((a, b) => fitness(a) > fitness(b) ? a : b);
-                if (fitness(bestIndividual) === (n * (n - 1)) / 2) {
+                console.log(fitness(bestIndividual));
+                if (fitness(bestIndividual) === 0) {
                     bestSolution = bestIndividual;
-                    document.getElementById("bestFitness").textContent = "Best Fitness: " + fitness(bestIndividual);
+                    console.log(fitness(bestIndividual));
+                    resolve(true); 
+                } else {
+                    resolve(false);
                 }
-                resolve();
             }, 0);
         });
     };
 
     for (let generation = 0; generation < maxGenerations; generation++) {
-        await generationStep(generation);
+        const foundOptimal = await generationStep(generation);
+        if (foundOptimal) {
+            break;  
+        }
     }
 
     bestSolution =  bestSolution || population.reduce((a, b) => fitness(a) > fitness(b) ? a : b);
@@ -94,7 +100,6 @@ function prepareBoard() {
     // Isso aqui em algum momento funcionou, mas agora parece não fazer diferença
     // Calcula o tamanho máximo de uma célula para caber no tamanho máximo do tabuleiro.
     const cellSize = Math.min(boardElement.clientWidth / n, boardElement.clientHeight / n);
-    console.log(cellSize);
 
     boardElement.style.gridTemplateRows = `repeat(${n}, ${cellSize}px)`;
     boardElement.style.gridTemplateColumns = `repeat(${n}, ${cellSize}px)`;
