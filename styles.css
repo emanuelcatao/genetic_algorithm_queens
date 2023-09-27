@@ -185,3 +185,39 @@ button:hover {
     filter: invert(1);
     position: relative;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    
+    body {
+        flex-direction: column;
+    }
+    
+    .toolbar {
+        width: 100vw;
+        height: auto;
+    }
+    
+    .main-wrapper {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        max-height: unset;
+    }
+
+    #boardWrapper {
+        width: 100vw;
+        max-height: calc(100vh - 200px);
+    }
+    
+    #board {
+        min-width: 90vw;
+        min-height: 90vw;
+        max-width: 90vw;
+        max-height: 90vw;
+    }
+}
+
