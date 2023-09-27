@@ -1,3 +1,5 @@
+🇧🇷 *Leia isto em Português* | [🇬🇧 Read this in English](README_EN.md)
+
 ### 🧬 Algoritmo Genético para o Problema das N Rainhas
 
 O código JavaScript apresentado descreve uma implementação de algoritmo genético para solucionar o problema clássico das N Rainhas.
